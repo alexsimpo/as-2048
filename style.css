@@ -22,9 +22,9 @@ h2 {
     font-size: 1em;
     display: inline;
     right: 0;
-    bottom: 25px;
+    bottom: -15px;
     position: absolute;
-    opacity: 0.8;
+    opacity: 0.3;
 }
 
 h3 {
@@ -33,6 +33,19 @@ h3 {
     opacity: 0.8;
     line-height: 1.5em;
     font-weight: normal;
+}
+
+h4 {
+    font-size: 1.2em;
+    display: inline;
+    right: 1px;
+    bottom: 25px;
+    position: absolute;
+    opacity: 0.8;
+    background-color: #ff746f;
+    padding: 10px;
+    color: whitesmoke;
+    border-radius: 10px;
 }
 
 header {
@@ -55,7 +68,6 @@ header {
     background-color: #ffa4a2;
     width: 110px;
     height: 110px;
-    font-size: 30px;
     text-align: center;
     border-radius: 5px;
     margin: 7.5px;
@@ -66,3 +78,6 @@ header {
     line-height: 1.75em;
 }
 
+@keyframes push{
+    50%  {transform: scale(0.8);}
+}
