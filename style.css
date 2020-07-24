@@ -78,6 +78,26 @@ header {
     line-height: 1.75em;
 }
 
+.game-over {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    display: none;
+}
+
+h5 {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 3em;
+    position: absolute;
+    text-align: center;
+    width: 520px;
+    margin-top: 225px;
+    display: none;
+}
+
 @keyframes push{
     50%  {transform: scale(0.8);}
 }

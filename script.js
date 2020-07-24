@@ -80,7 +80,9 @@ function createNumber() {
     }
 
     if (!checkGridStatus()) {
-        console.log("loser loser");
+        if (!canMoveRight() && !canMoveUp() && !canMoveDown() && !canMoveLeft()){
+            console.log("gameover")
+        }
     }
 }
 
@@ -209,6 +211,71 @@ function start() {
     });
 }
 
+function canMoveDown() {
+    for (j = 0; j < 4; j++) {
+        for (i = 2; i >= 0; i--){
+            row = i;
+            while (row + 1 < 4) {
+                if (gridArray[row][j] == gridArray[row + 1][j]) {
+                    console.log("can down");
+                    return true;
+                }
+            }
+            
+        }
+    }
+    console.log("cant down");
+    return false;
+}
+
+function canMoveUp() {
+    for (j = 0; j < 4; j++) {
+        for (i = 1; i <= 3; i++){
+            row = i;
+            while (row - 1 > -1) {
+                if (gridArray[row][j] == gridArray[row - 1][j]) {
+                    return true;
+                }
+            }
+            
+        }
+    }
+    return false;
+}
+
+function canMoveLeft() {
+    for (i = 0; i < 4; i++) {
+        for (j = 1; j <= 3; j++){
+            col = j;
+            while (col - 1 > -1) {
+                if (gridArray[i][col] == gridArray[i][col - 1]) {
+                    console.log("can left");
+                    return true;
+                }
+            }
+            
+        }
+    }
+    console.log("cant left");
+    return false;
+}
+
+function canMoveRight() {
+    for (i = 0; i < 4; i++) {
+        for (j = 2; j >= 0; j--){
+            col = j;
+            while (col + 1 < 4) {
+                if (gridArray[i][col] == gridArray[i][col + 1]) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            
+        }
+    }
+}
+
 function moveDown() {
     for (j = 0; j < 4; j++) {
         for (i = 2; i >= 0; i--){
@@ -222,7 +289,7 @@ function moveDown() {
                     gridArray[row + 1][j] *= 2;
                     gridArray[row][j] = 0;
                     let anim2 = document.querySelector(`#square-${row + 1}-${j}`);
-                    anim2.style.animation = "push 0.3s linear 1";
+                    anim2.style.animation = "push 0.2s linear 1";
                     score += gridArray[row + 1][j];
                     break;
                 } else {
@@ -247,7 +314,7 @@ function moveUp() {
                     gridArray[row - 1][j] *= 2;
                     gridArray[row][j] = 0;
                     let anim = document.querySelector(`#square-${row - 1}-${j}`);
-                    anim.style.animation = "push 0.3s linear 1";
+                    anim.style.animation = "push 0.2s linear 1";
                     score += gridArray[row - 1][j];
                     break;
                 } else {
@@ -272,7 +339,7 @@ function moveLeft() {
                     gridArray[i][col - 1] *= 2;
                     gridArray[i][col] = 0;
                     let anim = document.querySelector(`#square-${i}-${col - 1}`);
-                    anim.style.animation = "push 0.3s linear 1";
+                    anim.style.animation = "push 0.2s linear 1";
                     score += gridArray[i][col - 1];
                     break;
                 } else {
@@ -297,7 +364,7 @@ function moveRight() {
                     gridArray[i][col + 1] *= 2;
                     gridArray[i][col] = 0;
                     let anim = document.querySelector(`#square-${i}-${col + 1}`);
-                    anim.style.animation = "push 0.3s linear 1";
+                    anim.style.animation = "push 0.2s linear 1";
                     score += gridArray[i][col + 1];
                     break;
                 } else {
