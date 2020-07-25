@@ -81,7 +81,8 @@ function createNumber() {
 
     if (!checkGridStatus()) {
         if (!canMoveRight() && !canMoveUp() && !canMoveDown() && !canMoveLeft()){
-            console.log("gameover")
+            $(".game-over").fadeIn(1000);
+            $(".game-over-text").delay(1000).fadeIn(1000);
         }
     }
 }
@@ -214,30 +215,19 @@ function start() {
 function canMoveDown() {
     for (j = 0; j < 4; j++) {
         for (i = 2; i >= 0; i--){
-            row = i;
-            while (row + 1 < 4) {
-                if (gridArray[row][j] == gridArray[row + 1][j]) {
-                    console.log("can down");
-                    return true;
-                }
-            }
-            
+            if (gridArray[i][j] == gridArray[i + 1][j]) {
+                return true;
+            } 
         }
     }
-    console.log("cant down");
-    return false;
 }
 
 function canMoveUp() {
     for (j = 0; j < 4; j++) {
         for (i = 1; i <= 3; i++){
-            row = i;
-            while (row - 1 > -1) {
-                if (gridArray[row][j] == gridArray[row - 1][j]) {
+            if (gridArray[i][j] == gridArray[i - 1][j]) {
                     return true;
-                }
             }
-            
         }
     }
     return false;
@@ -246,14 +236,10 @@ function canMoveUp() {
 function canMoveLeft() {
     for (i = 0; i < 4; i++) {
         for (j = 1; j <= 3; j++){
-            col = j;
-            while (col - 1 > -1) {
-                if (gridArray[i][col] == gridArray[i][col - 1]) {
-                    console.log("can left");
-                    return true;
-                }
+            if (gridArray[i][j] == gridArray[i][j - 1]) {
+                console.log("can left");
+                return true;
             }
-            
         }
     }
     console.log("cant left");
@@ -263,17 +249,13 @@ function canMoveLeft() {
 function canMoveRight() {
     for (i = 0; i < 4; i++) {
         for (j = 2; j >= 0; j--){
-            col = j;
-            while (col + 1 < 4) {
-                if (gridArray[i][col] == gridArray[i][col + 1]) {
-                    return true;
-                } else {
-                    return false;
-                }
+            if (gridArray[i][j] == gridArray[i][j + 1]) {
+                console.log("can left");
+                return true;
             }
-            
         }
     }
+    return false;
 }
 
 function moveDown() {
